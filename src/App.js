@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -8,7 +7,7 @@ class App extends Component {
       <div className="App">
         <p>00%<progress max="100" value="80"></progress></p>
         <p>00%<progress max="100" value="33"></progress></p>
-        <p>00%<progress max="100" value="33"></progress></p>
+        <p>00%<progress max="100" value="33" class="selected"></progress></p>
         <p>00%<progress max="100" value="44"></progress></p>
 
         <p>

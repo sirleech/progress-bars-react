@@ -23,6 +23,12 @@ progress[value] {
   width: 400px;
   height: 28px;
   margin-bottom:10px;
+  border: 2px solid #ededed;
+}
+
+progress.selected {
+  border: 2px solid #4da9f9;
+  border-radius: 18px;
 }
 
 progress[value]::-webkit-progress-bar {
