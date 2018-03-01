@@ -1,0 +1,30 @@
+.App {
+  text-align: center;
+}
+
+body {
+ font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+   appearance: none;
+
+  width: 400px;
+  height: 28px;
+  margin-bottom:10px;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 18px;
+}
+
+progress[value]::-webkit-progress-value {
+    border-radius: 18px;
+    background-color: #8ad4fc;
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+    transition: 0.4s linear;
+    transition-property: width, background-color;
+}
