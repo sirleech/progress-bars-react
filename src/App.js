@@ -10,6 +10,18 @@ class App extends Component {
         <p><progress max="100" value="33"></progress></p>
         <p><progress max="100" value="33"></progress></p>
         <p><progress max="100" value="44"></progress></p>
+
+        <select id="bar-select">
+          <option value="bar1">Bar 1</option>
+          <option value="bar2">Bar 2</option>
+          <option value="bar3">Bar 3</option>
+          <option value="bar4">Bar 4</option>
+        </select>
+
+        <button>0%</button>
+        <button>0%</button>
+        <button>0%</button>
+
       </div>
     );
   }
