@@ -7,8 +7,13 @@ body {
 }
 
 .App {
-
 }
+
+label {margin-right:10px;}
+
+select,button {height:40px; border-radius: 6px;}
+select {width: 250px;}
+button {width: 100px; margin-left: 15px;}
 
 progress[value] {
   /* Reset the default appearance */
