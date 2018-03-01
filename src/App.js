@@ -11,7 +11,6 @@ class App extends Component {
         <p><span class="percentLabel">00%</span><progress max="100" value="44" class="selected"></progress></p>
 
         <p>
-          <label>Select your bar</label>
           <select id="bar-select">
             <option value="bar1">Bar 1</option>
             <option value="bar2">Bar 2</option>
@@ -21,10 +20,9 @@ class App extends Component {
         </p>
 
         <p>
-          <label>Change progress</label>
-          <button>0%</button>
-          <button>0%</button>
-          <button>0%</button>
+          <button>+55</button>
+          <button>+2</button>
+          <button>-67</button>
         </p>
 
       </div>

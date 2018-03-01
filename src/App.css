@@ -3,7 +3,7 @@
 body {
  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
  background: #ededed;
- color: #444444;
+ color: #4a4a4a;
  text-align: center;
 }
 
@@ -16,11 +16,25 @@ body {
   top: -17px;
 }
 
-label {margin-right:10px;}
-
 select,button {height:40px; border-radius: 6px;}
-select {width: 250px;}
-button {width: 100px; margin-left: 15px;}
+select {width: 328px;}
+button {width: 100px;}
+
+select:hover{border:2px solid;}
+button:hover{border:2px solid;}
+
+
+select:focus,button:focus {outline: none; background-color: #bde2fc;}
+button:active {background-color: #b2d67c;}
+
+select,button {
+
+  margin-left: 15px;
+  font-size: 18px;
+  color: #4a4a4a;
+  border: none;
+  background-color: #fff;
+}
 
 progress {
   /* Reset the default appearance */
