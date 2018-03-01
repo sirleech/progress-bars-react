@@ -5,10 +5,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <p>00%<progress max="100" value="80"></progress></p>
-        <p>00%<progress max="100" value="33"></progress></p>
-        <p>00%<progress max="100" value="33" class="selected"></progress></p>
-        <p>00%<progress max="100" value="44"></progress></p>
+        <p><span class="percentLabel">00%</span><progress max="100" value="80"></progress></p>
+        <p><span class="percentLabel">00%</span><progress max="100" value="33"></progress></p>
+        <p><span class="percentLabel">00%</span><progress max="100" value="33"></progress></p>
+        <p><span class="percentLabel">00%</span><progress max="100" value="44" class="selected"></progress></p>
 
         <p>
           <label>Select your bar</label>

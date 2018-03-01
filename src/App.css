@@ -3,10 +3,17 @@
 body {
  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
  background: #ededed;
+ color: #444444;
  text-align: center;
 }
 
 .App {
+}
+
+.percentLabel {
+  position: relative;
+  left: -10px;
+  top: -17px;
 }
 
 label {margin-right:10px;}
@@ -15,20 +22,15 @@ select,button {height:40px; border-radius: 6px;}
 select {width: 250px;}
 button {width: 100px; margin-left: 15px;}
 
-progress[value] {
+progress {
   /* Reset the default appearance */
   -webkit-appearance: none;
    appearance: none;
 
   width: 400px;
-  height: 28px;
+  height: 32px;
   margin-bottom:10px;
   border: 2px solid #ededed;
-}
-
-progress.selected {
-  border: 2px solid #4da9f9;
-  border-radius: 18px;
 }
 
 progress[value]::-webkit-progress-bar {
@@ -38,8 +40,13 @@ progress[value]::-webkit-progress-bar {
 
 progress[value]::-webkit-progress-value {
     border-radius: 18px;
-    background-color: #8ad4fc;
+    background-color: #b2d67c;
     background-size: 35px 20px, 100% 100%, 100% 100%;
     transition: 0.4s linear;
     transition-property: width, background-color;
+}
+
+progress.selected {
+  border: 2px solid #3a5714;
+  border-radius: 18px;
 }
