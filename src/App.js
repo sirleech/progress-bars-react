@@ -1,37 +1,60 @@
 import React, { Component } from 'react';
 import './App.css';
 
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+class ProgressBar extends React.Component {
 
-class ProgBar extends React.Component {
+  render() {
+      return(
+        <p>
+          <span class="percentLabel">
+            {this.props.percent}%
+          </span>
+          <progress max="100" value={this.props.percent}>
+          </progress>
+        </p>
+      )
+  }
+};
+
+class ProgressBarInteractiveForm extends React.Component {
+
   constructor(props) {
     super(props);
-    this.state = {percent: props.percent, class: props.class };
+    this.state = {"buttons":[0,0,0,0],"bars":[0,0,0]};
   }
 
   componentDidMount() {
-    this.timerID = setInterval(
-      () => this.randProgress(),
-      3000
-    );
-  }
-
-  randProgress(){
-    this.setState({percent: getRandomInt(0,150)});
+    fetch("https://frontend-exercise.apps.b.cld.gov.au/bars")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState(result);
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
   }
 
   render() {
-    if (this.state.percent > 100) {
-      return(
-        <p><span class="percentLabel">{this.state.percent}%</span><progress class={this.state.class+" overOneHundred"} max="100" value={this.state.percent}></progress></p>
-      )
-    } else{
-      return(
-        <p><span class="percentLabel">{this.state.percent}%</span><progress class={this.state.class} max="100" value={this.state.percent}></progress></p>
-      )
+    var bars = this.state.bars;
+    var rows = [];
+    for (var i = 0; i < bars.length; i++) {
+    // note: we add a key prop here to allow react to uniquely identify each
+    // element in this array. see: https://reactjs.org/docs/lists-and-keys.html
+      rows.push(<ProgressBar percent={bars[i]} key={i} />);
     }
+    return(
+      <div>
+        {rows}
+      </div>
+    )
   }
 
 };
@@ -42,10 +65,7 @@ class App extends Component {
     return (
       <div className="App">
         <div class="bars">
-          <ProgBar percent="30" />
-          <ProgBar percent="44" />
-          <ProgBar percent="134" />
-          <ProgBar percent="78"  class="selected" />
+          <ProgressBarInteractiveForm />
         </div>
 
         <p>
