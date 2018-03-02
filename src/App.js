@@ -1,16 +1,31 @@
 import React, { Component } from 'react';
 import './App.css';
 
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 class ProgBar extends React.Component {
   constructor(props) {
-      super(props);
-      this.state = {percent: props.percent, class: props.class };
+    super(props);
+    this.state = {percent: props.percent, class: props.class };
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.randProgress(),
+      3000
+    );
+  }
+
+  randProgress(){
+    this.setState({percent: getRandomInt(0,150)});
   }
 
   render() {
     if (this.state.percent > 100) {
       return(
-        <p><span class="percentLabel">{this.state.percent}%</span><progress class={this.state.class} max="100" value={this.state.percent} class="overOneHundred"></progress></p>
+        <p><span class="percentLabel">{this.state.percent}%</span><progress class={this.state.class+" overOneHundred"} max="100" value={this.state.percent}></progress></p>
       )
     } else{
       return(
@@ -27,10 +42,10 @@ class App extends Component {
     return (
       <div className="App">
         <div class="bars">
-          <ProgBar percent="30" class="selected" />
+          <ProgBar percent="30" />
           <ProgBar percent="44" />
           <ProgBar percent="134" />
-          <ProgBar percent="78" />
+          <ProgBar percent="78"  class="selected" />
         </div>
 
         <p>
