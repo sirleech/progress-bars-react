@@ -10,10 +10,13 @@ body {
 .App {
 }
 
+.bars {margin-top:100px;}
+
 .percentLabel {
+  font-size: 18px;
   position: relative;
   left: 220px;
-  top: -17px;
+  top: -16px;
 }
 
 select,button {height:40px; border-radius: 6px;}

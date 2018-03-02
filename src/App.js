@@ -19,10 +19,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {makeProgBar(33)}
-        {makeProgBar(65)}
-        {makeProgBar(108)}
-        {makeProgBar(22)}
+        <div class="bars">
+        {makeProgBar(40)}
+        {makeProgBar(20)}
+        {makeProgBar(150)}
+        {makeProgBar(80)}
+        </div>
 
         <p>
           <select id="bar-select">
