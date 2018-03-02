@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
 import './App.css';
 
+function makeProgBar(percent) {
+  if (percent > 100) {
+    return(
+      <p><span class="percentLabel">{percent}%</span><progress max="100" value={percent} class="overOneHundred"></progress></p>
+    )
+  } else{
+    return(
+      <p><span class="percentLabel">{percent}%</span><progress max="100" value={percent}></progress></p>
+    )
+  }
+
+};
+
 class App extends Component {
+
   render() {
     return (
       <div className="App">
-        <p><span class="percentLabel">00%</span><progress max="100" value="80"></progress></p>
-        <p><span class="percentLabel">00%</span><progress max="100" value="33"></progress></p>
-        <p><span class="percentLabel">00%</span><progress max="100" value="33"></progress></p>
-        <p><span class="percentLabel">00%</span><progress max="100" value="44" class="selected"></progress></p>
+        {makeProgBar(33)}
+        {makeProgBar(65)}
+        {makeProgBar(108)}
+        {makeProgBar(22)}
 
         <p>
           <select id="bar-select">
@@ -23,6 +37,7 @@ class App extends Component {
           <button>+55</button>
           <button>+2</button>
           <button>-67</button>
+          <button>+34</button>
         </p>
 
       </div>

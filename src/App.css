@@ -12,7 +12,7 @@ body {
 
 .percentLabel {
   position: relative;
-  left: -10px;
+  left: 220px;
   top: -17px;
 }
 
@@ -59,6 +59,11 @@ progress[value]::-webkit-progress-value {
     transition: 0.4s linear;
     transition-property: width, background-color;
 }
+
+progress[value].overOneHundred::-webkit-progress-value{
+    background-color: #e49a9b;
+}
+
 
 progress.selected {
   border: 2px solid #3a5714;
