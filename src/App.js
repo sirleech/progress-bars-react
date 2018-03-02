@@ -4,12 +4,15 @@ import './App.css';
 class ProgressBar extends React.Component {
 
   render() {
+      if (this.props.selected)
+        var cssClass = "selected";
+
       return(
         <p>
           <span class="percentLabel">
             {this.props.percent}%
           </span>
-          <progress max="100" value={this.props.percent}>
+          <progress class={cssClass} max="100" value={this.props.percent}>
           </progress>
         </p>
       )
@@ -46,15 +49,23 @@ class ProgressBarInteractiveForm extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {"buttons":[0,0,0,0],"bars":[0,0,0]};
+    this.state = {"buttons":[0,0,0,0],"bars":[0,0,0],"selected":[0,0,0,0,0]};
+  }
+
+  selectBar(index) {
+    var arr = {"selected":[0,0,0,0,0]};
+    arr[index] = 1;
+    this.setState({"selected": arr});
   }
 
   componentDidMount() {
+    this.selectBar(1);
+    
     fetch("https://frontend-exercise.apps.b.cld.gov.au/bars")
       .then(res => res.json())
       .then(
         (result) => {
-          this.setState(result);
+          this.setState({"buttons": result.buttons,"bars": result.bars});
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -74,7 +85,11 @@ class ProgressBarInteractiveForm extends React.Component {
     var buttonRows = [];
 
     for (var i = 0; i < this.state.bars.length; i++) {
-      barRows.push(<ProgressBar percent={this.state.bars[i]} key={i} />);
+      var selected = false;
+      if (this.state.selected[i] == 1)
+        selected = true;
+
+      barRows.push(<ProgressBar selected={selected} percent={this.state.bars[i]} key={i} />);
     }
 
     for (var i = 0; i < this.state.buttons.length; i++) {
