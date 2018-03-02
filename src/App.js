@@ -9,10 +9,10 @@ class ProgressBar extends React.Component {
 
       return(
         <p>
-          <span class="percentLabel">
+          <span className="percentLabel">
             {this.props.percent}%
           </span>
-          <progress class={cssClass} max="100" value={this.props.percent}>
+          <progress className={cssClass} max="100" value={this.props.percent}>
           </progress>
         </p>
       )
@@ -60,7 +60,7 @@ class ProgressBarInteractiveForm extends React.Component {
 
   componentDidMount() {
     this.selectBar(1);
-    
+
     fetch("https://frontend-exercise.apps.b.cld.gov.au/bars")
       .then(res => res.json())
       .then(
@@ -86,13 +86,13 @@ class ProgressBarInteractiveForm extends React.Component {
 
     for (var i = 0; i < this.state.bars.length; i++) {
       var selected = false;
-      if (this.state.selected[i] == 1)
+      if (this.state.selected[i] === 1)
         selected = true;
 
       barRows.push(<ProgressBar selected={selected} percent={this.state.bars[i]} key={i} />);
     }
 
-    for (var i = 0; i < this.state.buttons.length; i++) {
+    for (i = 0; i < this.state.buttons.length; i++) {
       buttonRows.push(<Button delta={this.state.buttons[i]} key={i} />);
     }
 
@@ -112,7 +112,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div class="bars">
+        <div className="bars">
           <ProgressBarInteractiveForm />
         </div>
       </div>
