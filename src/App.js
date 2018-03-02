@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 
-function makeProgBar(percent) {
-  if (percent > 100) {
+function ProgBar(props) {
+  if (props.percent > 100) {
     return(
-      <p><span class="percentLabel">{percent}%</span><progress max="100" value={percent} class="overOneHundred"></progress></p>
+      <p><span class="percentLabel">{props.percent}%</span><progress class={props.class} max="100" value={props.percent} class="overOneHundred"></progress></p>
     )
   } else{
     return(
-      <p><span class="percentLabel">{percent}%</span><progress max="100" value={percent}></progress></p>
+      <p><span class="percentLabel">{props.percent}%</span><progress class={props.class} max="100" value={props.percent}></progress></p>
     )
   }
 
@@ -20,10 +20,10 @@ class App extends Component {
     return (
       <div className="App">
         <div class="bars">
-        {makeProgBar(40)}
-        {makeProgBar(20)}
-        {makeProgBar(150)}
-        {makeProgBar(80)}
+          <ProgBar percent="30" class="selected" />
+          <ProgBar percent="44" />
+          <ProgBar percent="134" />
+          <ProgBar percent="78" />
         </div>
 
         <p>

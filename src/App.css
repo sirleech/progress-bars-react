@@ -67,7 +67,6 @@ progress[value].overOneHundred::-webkit-progress-value{
     background-color: #e49a9b;
 }
 
-
 progress.selected {
   border: 2px solid #3a5714;
   border-radius: 18px;
