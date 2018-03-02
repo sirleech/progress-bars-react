@@ -16,6 +16,32 @@ class ProgressBar extends React.Component {
   }
 };
 
+class Selector extends React.Component {
+
+  render() {
+    return (
+      <p>
+        <select id="bar-select">
+          <option value="bar1">Bar 1</option>
+          <option value="bar2">Bar 2</option>
+          <option value="bar3">Bar 3</option>
+          <option value="bar4">Bar 4</option>
+        </select>
+      </p>
+    )
+  }
+}
+
+class Button extends React.Component {
+
+  render() {
+    return (
+      <button>{this.props.delta}</button>
+    )
+  }
+}
+
+
 class ProgressBarInteractiveForm extends React.Component {
 
   constructor(props) {
@@ -43,16 +69,23 @@ class ProgressBarInteractiveForm extends React.Component {
   }
 
   render() {
-    var bars = this.state.bars;
-    var rows = [];
-    for (var i = 0; i < bars.length; i++) {
-    // note: we add a key prop here to allow react to uniquely identify each
-    // element in this array. see: https://reactjs.org/docs/lists-and-keys.html
-      rows.push(<ProgressBar percent={bars[i]} key={i} />);
+
+    var barRows = [];
+    var buttonRows = [];
+
+    for (var i = 0; i < this.state.bars.length; i++) {
+      barRows.push(<ProgressBar percent={this.state.bars[i]} key={i} />);
     }
+
+    for (var i = 0; i < this.state.buttons.length; i++) {
+      buttonRows.push(<Button delta={this.state.buttons[i]} key={i} />);
+    }
+
     return(
       <div>
-        {rows}
+        {barRows}
+        <Selector />
+        {buttonRows}
       </div>
     )
   }
@@ -67,23 +100,6 @@ class App extends Component {
         <div class="bars">
           <ProgressBarInteractiveForm />
         </div>
-
-        <p>
-          <select id="bar-select">
-            <option value="bar1">Bar 1</option>
-            <option value="bar2">Bar 2</option>
-            <option value="bar3">Bar 3</option>
-            <option value="bar4">Bar 4</option>
-          </select>
-        </p>
-
-        <p>
-          <button>+55</button>
-          <button>+2</button>
-          <button>-67</button>
-          <button>+34</button>
-        </p>
-
       </div>
     );
   }
