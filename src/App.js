@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
 
-function ProgBar(props) {
-  if (props.percent > 100) {
-    return(
-      <p><span class="percentLabel">{props.percent}%</span><progress class={props.class} max="100" value={props.percent} class="overOneHundred"></progress></p>
-    )
-  } else{
-    return(
-      <p><span class="percentLabel">{props.percent}%</span><progress class={props.class} max="100" value={props.percent}></progress></p>
-    )
+class ProgBar extends React.Component {
+  constructor(props) {
+      super(props);
+      this.state = {percent: props.percent, class: props.class };
+  }
+
+  render() {
+    if (this.state.percent > 100) {
+      return(
+        <p><span class="percentLabel">{this.state.percent}%</span><progress class={this.state.class} max="100" value={this.state.percent} class="overOneHundred"></progress></p>
+      )
+    } else{
+      return(
+        <p><span class="percentLabel">{this.state.percent}%</span><progress class={this.state.class} max="100" value={this.state.percent}></progress></p>
+      )
+    }
   }
 
 };
