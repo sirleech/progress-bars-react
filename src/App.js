@@ -28,13 +28,13 @@ class Button extends React.Component {
   }
 }
 
-
 class ProgressBarInteractiveForm extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {"buttons":[],"bars":[],"selected":""};
     this.handleChange = this.handleChange.bind(this);
+    this.updateBar = this.updateBar.bind(this);
   }
 
   selectBar(index) {
@@ -72,14 +72,8 @@ class ProgressBarInteractiveForm extends React.Component {
         (result) => {
           this.setState({"buttons": result.buttons,"bars": result.bars});
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
+          this.setState({"buttons":[],"bars":[]});
         }
       )
   }
@@ -119,8 +113,6 @@ class ProgressBarInteractiveForm extends React.Component {
   }
 
 };
-
-//<option value="0">Bar 1</option>
 
 class App extends Component {
 
