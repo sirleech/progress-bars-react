@@ -23,8 +23,15 @@ class ProgressBar extends React.Component {
 };
 
 class Button extends React.Component {
+
   render(){
-    return (<button onClick={this.props.handleClick}>{this.props.delta}</button>)
+    if (this.props.delta > 0)
+      var label = "+" + this.props.delta;
+    else {
+      label = this.props.delta;
+    }
+    
+    return (<button onClick={this.props.handleClick}>{label}</button>)
   }
 }
 
