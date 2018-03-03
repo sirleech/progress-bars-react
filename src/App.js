@@ -98,6 +98,7 @@ class ProgressBarInteractiveForm extends React.Component {
 
     var barRows = [];
     var buttons = this.state.buttons;
+    var bars = this.state.bars;
 
     for (var i = 0; i < this.state.bars.length; i++) {
       var selected = false;
@@ -113,10 +114,10 @@ class ProgressBarInteractiveForm extends React.Component {
 
         <p>
           <select value={this.state.selected} onChange={this.handleChange} id="bar-select">
-            <option value="0">Bar 1</option>
-            <option value="1">Bar 2</option>
-            <option value="2">Bar 3</option>
-            <option value="3">Bar 4</option>
+          {bars.map(function(percent,index){
+            return <option value={index} key={index}>Bar {index+1}: {percent}%</option>
+          })}
+
           </select>
         </p>
 
@@ -128,6 +129,8 @@ class ProgressBarInteractiveForm extends React.Component {
   }
 
 };
+
+//<option value="0">Bar 1</option>
 
 class App extends Component {
 
