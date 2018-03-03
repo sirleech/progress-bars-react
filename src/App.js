@@ -46,26 +46,25 @@ class ProgressBarInteractiveForm extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {"buttons":[],"bars":[],"selected":[]};
+    this.state = {"buttons":[],"bars":[],"selected":""};
   }
 
   selectBar(index) {
-    var arr = {"selected":[0,0,0,0,0]};
-    arr[index] = 1;
-    this.setState({"selected": arr});
+    this.setState({"selected": index});
   }
 
   updateBar(i,delta){
-    console.log(delta);
     var array = this.state.bars.slice(0);
-
     array[i] = array[i]+delta;
-    console.log(array);
     this.setState({"bars": array});
   }
 
   getSelectedBar(){
-    return 0;
+    return this.state.selected;
+  }
+
+  isTrue(element){
+    return element;
   }
 
   componentDidMount() {
@@ -93,11 +92,10 @@ class ProgressBarInteractiveForm extends React.Component {
 
     var barRows = [];
     var buttons = this.state.buttons;
-    //var buttonRows = [];
 
     for (var i = 0; i < this.state.bars.length; i++) {
       var selected = false;
-      if (this.state.selected[i] === 1)
+      if (this.state.selected == i)
         selected = true;
 
       barRows.push(<ProgressBar selected={selected} percent={this.state.bars[i]} key={i} />);
