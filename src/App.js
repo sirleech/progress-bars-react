@@ -7,6 +7,9 @@ class ProgressBar extends React.Component {
       if (this.props.selected)
         var cssClass = "selected";
 
+      if (this.props.percent > 100)
+        cssClass = cssClass + " overOneHundred";
+
       return(
         <p>
           <span className="percentLabel">
@@ -18,22 +21,6 @@ class ProgressBar extends React.Component {
       )
   }
 };
-
-// class Selector extends React.Component {
-//
-//   render() {
-//     return (
-//       <p>
-//         <select onChange={this.props.handleChange} id="bar-select">
-//           <option value="0">Bar 1</option>
-//           <option value="1">Bar 2</option>
-//           <option value="2">Bar 3</option>
-//           <option value="3">Bar 4</option>
-//         </select>
-//       </p>
-//     )
-//   }
-// }
 
 class Button extends React.Component {
   render(){
@@ -62,6 +49,9 @@ class ProgressBarInteractiveForm extends React.Component {
   updateBar(i,delta){
     var array = this.state.bars.slice(0);
     array[i] = array[i]+delta;
+    if (array[i] < 0)
+      array[i] = 0;
+
     this.setState({"bars": array});
   }
 
