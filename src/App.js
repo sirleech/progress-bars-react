@@ -19,21 +19,21 @@ class ProgressBar extends React.Component {
   }
 };
 
-class Selector extends React.Component {
-
-  render() {
-    return (
-      <p>
-        <select id="bar-select">
-          <option value="bar1">Bar 1</option>
-          <option value="bar2">Bar 2</option>
-          <option value="bar3">Bar 3</option>
-          <option value="bar4">Bar 4</option>
-        </select>
-      </p>
-    )
-  }
-}
+// class Selector extends React.Component {
+//
+//   render() {
+//     return (
+//       <p>
+//         <select onChange={this.props.handleChange} id="bar-select">
+//           <option value="0">Bar 1</option>
+//           <option value="1">Bar 2</option>
+//           <option value="2">Bar 3</option>
+//           <option value="3">Bar 4</option>
+//         </select>
+//       </p>
+//     )
+//   }
+// }
 
 class Button extends React.Component {
   render(){
@@ -47,10 +47,16 @@ class ProgressBarInteractiveForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {"buttons":[],"bars":[],"selected":""};
+    this.handleChange = this.handleChange.bind(this);
   }
 
   selectBar(index) {
     this.setState({"selected": index});
+  }
+
+  handleChange(event){
+    //console.log(event.target.value);
+    this.selectBar(event.target.value);
   }
 
   updateBar(i,delta){
@@ -95,7 +101,7 @@ class ProgressBarInteractiveForm extends React.Component {
 
     for (var i = 0; i < this.state.bars.length; i++) {
       var selected = false;
-      if (this.state.selected == i)
+      if (this.state.selected === i)
         selected = true;
 
       barRows.push(<ProgressBar selected={selected} percent={this.state.bars[i]} key={i} />);
@@ -104,7 +110,16 @@ class ProgressBarInteractiveForm extends React.Component {
     return(
       <div>
         {barRows}
-        <Selector />
+
+        <p>
+          <select value={this.state.selected} onChange={this.handleChange} id="bar-select">
+            <option value="0">Bar 1</option>
+            <option value="1">Bar 2</option>
+            <option value="2">Bar 3</option>
+            <option value="3">Bar 4</option>
+          </select>
+        </p>
+
         {buttons.map(function(delta,index){
           return <Button handleClick={()=> this.updateBar(this.getSelectedBar(),delta)} key={index} delta={delta} />;
         },this)}
