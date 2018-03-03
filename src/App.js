@@ -100,7 +100,7 @@ class ProgressBarInteractiveForm extends React.Component {
 
     return(
       <div>
-        {barRows}
+        <div>{barRows}</div>
 
         <p>
           <select value={this.state.selected} onChange={this.handleChange} id="bar-select">
@@ -125,9 +125,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="bars">
           <ProgressBarInteractiveForm />
-        </div>
       </div>
     );
   }

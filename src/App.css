@@ -8,20 +8,20 @@ body {
 }
 
 .App {
+  margin-top: 100px;
 }
-
-.bars {margin-top:100px;}
 
 .percentLabel {
   font-size: 18px;
   position: relative;
-  left: 220px;
+  left: 166px;
   top: -16px;
+  z-index: 2;
 }
 
 select,button {height:40px; border-radius: 6px;}
-select {width: 328px;}
-button {width: 100px;}
+select {width: 320px;}
+button {width: 70px; height: 50px;}
 
 select:hover{border:2px solid;}
 button:hover{border:2px solid;}
@@ -44,10 +44,12 @@ progress {
   -webkit-appearance: none;
    appearance: none;
 
-  width: 400px;
+  width: 320px;
   height: 32px;
   margin-bottom:10px;
   border: 2px solid #ededed;
+  position: relative;
+  left: -14px;
 }
 
 progress[value]::-webkit-progress-bar {
