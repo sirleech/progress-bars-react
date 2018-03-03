@@ -36,11 +36,8 @@ class Selector extends React.Component {
 }
 
 class Button extends React.Component {
-
-  render() {
-    return (
-      <button>{this.props.delta}</button>
-    )
+  render(){
+    return (<button onClick={this.props.handleClick}>{this.props.delta}</button>)
   }
 }
 
@@ -49,7 +46,7 @@ class ProgressBarInteractiveForm extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {"buttons":[0,0,0,0],"bars":[0,0,0],"selected":[0,0,0,0,0]};
+    this.state = {"buttons":[],"bars":[],"selected":[]};
   }
 
   selectBar(index) {
@@ -58,8 +55,21 @@ class ProgressBarInteractiveForm extends React.Component {
     this.setState({"selected": arr});
   }
 
+  updateBar(i,delta){
+    console.log(delta);
+    var array = this.state.bars.slice(0);
+
+    array[i] = array[i]+delta;
+    console.log(array);
+    this.setState({"bars": array});
+  }
+
+  getSelectedBar(){
+    return 0;
+  }
+
   componentDidMount() {
-    this.selectBar(1);
+    this.selectBar(0);
 
     fetch("https://frontend-exercise.apps.b.cld.gov.au/bars")
       .then(res => res.json())
@@ -82,7 +92,8 @@ class ProgressBarInteractiveForm extends React.Component {
   render() {
 
     var barRows = [];
-    var buttonRows = [];
+    var buttons = this.state.buttons;
+    //var buttonRows = [];
 
     for (var i = 0; i < this.state.bars.length; i++) {
       var selected = false;
@@ -92,15 +103,13 @@ class ProgressBarInteractiveForm extends React.Component {
       barRows.push(<ProgressBar selected={selected} percent={this.state.bars[i]} key={i} />);
     }
 
-    for (i = 0; i < this.state.buttons.length; i++) {
-      buttonRows.push(<Button delta={this.state.buttons[i]} key={i} />);
-    }
-
     return(
       <div>
         {barRows}
         <Selector />
-        {buttonRows}
+        {buttons.map(function(delta,index){
+          return <Button handleClick={()=> this.updateBar(this.getSelectedBar(),delta)} key={index} delta={delta} />;
+        },this)}
       </div>
     )
   }
