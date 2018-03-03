@@ -101,7 +101,7 @@ class ProgressBarInteractiveForm extends React.Component {
 
     for (var i = 0; i < this.state.bars.length; i++) {
       var selected = false;
-      if (this.state.selected === i)
+      if (this.state.selected == i)
         selected = true;
 
       barRows.push(<ProgressBar selected={selected} percent={this.state.bars[i]} key={i} />);
