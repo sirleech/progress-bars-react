@@ -30,7 +30,7 @@ class Button extends React.Component {
     else {
       label = this.props.delta;
     }
-    
+
     return (<button onClick={this.props.handleClick}>{label}</button>)
   }
 }
@@ -49,7 +49,6 @@ class ProgressBarInteractiveForm extends React.Component {
   }
 
   handleChange(event){
-    //console.log(event.target.value);
     this.selectBar(event.target.value);
   }
 
