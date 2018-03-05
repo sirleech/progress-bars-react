@@ -46,6 +46,10 @@ Example structure from the endpoint:
 }
 ~~~~
 
+Example2:
 
+~~~~
+{"buttons":[14,46,-23,-41],"bars":[50,47,19,25]}
+~~~~
 
 Have fun!
