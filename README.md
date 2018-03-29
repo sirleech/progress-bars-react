@@ -1,6 +1,5 @@
 # Front End Assignment - Progress Bars
 Primary task: Using React.js implement progress bars:
-Web dev interview
 
 ## Requirements
 Use create-react-app to create your app.
